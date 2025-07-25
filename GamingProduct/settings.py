@@ -28,6 +28,7 @@ INSTALLED_APPS = [
 # Custom apps
 EXTERNAL_APPS = [
     'GameStore',
+    'django_filters'
 ]
 
 INSTALLED_APPS += EXTERNAL_APPS

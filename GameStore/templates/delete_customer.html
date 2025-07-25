@@ -1,9 +1,10 @@
 {% extends 'bast.html' %}
 
 {% block start %}
-
+<div class="container">
 <form action="" method="POST">
+        {% csrf_token %}
     <input type="submit" name="Submit">
   </form>
-
+</div>
 {% endblock %}

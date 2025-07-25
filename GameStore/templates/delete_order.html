@@ -1,0 +1,12 @@
+{% extends 'bast.html' %}
+
+{% block start %}
+<div class="container">
+<form action="{% url 'delete_order' form.id %}" method="POST">
+    {% csrf_token %}
+<!--    {{form}}-->
+    <a href="{% url 'home' %}" >Cancel</a>
+    <input class="btn btn-primary" type="submit" name="Submit">
+  </form>
+</div>
+{% endblock %}

@@ -10,12 +10,13 @@
       <div class="card card-body">
         <h5>Customer:</h5>
         <hr>
-        <a class="btn mb-2 btn-outline-info btn-sm btn-block" href="">
-          Update Customer
-        </a>
-        <a class="btn mt-2 btn-outline-danger btn-sm btn-block" href="">
-          Delete Customer
-        </a>
+        <a class="btn mb-2 btn-outline-info btn-sm w-100" href="{% url 'update_customer' customer_data.id %}">
+  Update Customer
+</a>
+<a class="btn mt-2 btn-outline-danger btn-sm w-100" href="{% url 'delete_customer' customer_data.id %}">
+  Delete Customer
+</a>
+
       </div>
     </div>
 
@@ -45,14 +46,13 @@
       <div class="card card-body">
         <form method="get">
           <div class="input-group">
-            <input type="text" name="q" class="form-control" placeholder="Search by product or status...">
+            {{my_filter.form}}
             <button class="btn btn-primary" type="submit">Search</button>
           </div>
         </form>
       </div>
     </div>
   </div>
-
   <!-- Order List -->
   <div class="row">
     <div class="col-md">
@@ -76,9 +76,9 @@
               <td>{{ order.product.category }}</td>
               <td>{{ order.product.date_created }}</td>
               <td>{{ order.status }}</td>
-              <td><a class="btn btn-info" href="#" >Update</a>
+              <td><a class="btn btn-info" href="{% url 'updateorder' order.id %}" >Update</a>
               </td>
-              <td><a class="btn btn-danger" href="#">Remove</a>
+              <td><a class="btn btn-danger" href="{% url 'delete_order' order.id %}">Remove</a>
               </td>
             </tr>
             {% empty %}
