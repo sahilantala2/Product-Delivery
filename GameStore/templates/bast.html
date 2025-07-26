@@ -17,6 +17,9 @@
         #order-pending{
             background-color:#7CD1C0;
         }
+        .user-welcome{
+            color:white;
+        }
     </style>
 </head>
 <body>
@@ -35,9 +38,10 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'product' %}">Products</a>
                 </li>
-<!--                   <li class="nav-item">-->
-<!--                  <a class="nav-link" href="/customer/<id>/">Customer</a>-->
-<!--                </li>-->
+                  <span class="user-welcome" >Hello, {{request.user}}</span>
+                   <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
               </ul>
             </div>
           </div>

@@ -1,14 +1,35 @@
 from django.shortcuts import render, redirect
 from django.urls import path
 from django.http import HttpResponse
+from pyexpat.errors import messages
+from django.contrib import messages
 from .filters import OrderFilter
 from .models import *
-from .forms import *
+from .forms import OrderForm,CreateUseForm
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 # Create your views here.
 
 def login_page(request):
-    return render(request,'login.html')
+    if request.method == 'POST':
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+
+        user = authenticate(request,username=username,password=password)
+
+        if user is not None:
+            login(request,user)
+            return redirect('home')
+        else:
+            messages.info(request,'Username Or Password is incorrect')
+            # return render(request,'login.html')
+
+    context = {}
+    return render(request,'login.html',context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login_page')
 
 def register_page(request):
     form = CreateUseForm()
@@ -16,6 +37,9 @@ def register_page(request):
         form=CreateUseForm(request.POST)
         if form.is_valid():
             form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request,'Account was created for: ' + user)
+            return redirect('login_page')
 
     context = {
         'form':form
@@ -54,6 +78,7 @@ def customer(request,cus_id):
         'my_filter': my_filter
     }
     return render(request,'customer.html',context)
+
 
 def create_customer(req):
     forms = CustomerForm()

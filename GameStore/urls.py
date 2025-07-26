@@ -13,5 +13,6 @@ urlpatterns = [
     path('updateorder/<int:id>', views.update_order,name='updateorder'),
     path('delete_order/<int:id>', views.delete_order,name='delete_order'),
     path('login_page', views.login_page,name='login_page'),
+    path('logout', views.logoutUser,name='logout'),
     path('register_page', views.register_page,name='register_page'),
 ]
