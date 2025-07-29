@@ -69,8 +69,12 @@ WSGI_APPLICATION = 'GamingProduct.wsgi.application'
 # Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'DEMO',
+        'USER': 'postgres',
+        'PASSWORD':'sahildigipie',
+        'HOST':'localhost',
+        'PORT':'5432'
     }
 }
 
@@ -114,9 +118,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'public/media')
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBacked'
-EMAIL_HOST = 'smtp.gmail'
-EMAIL_PORT = '587'
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'text24noww@gmail.com'
-EMAIL_HOST_PASSWORD = 'lbyk ghpt blwf qvnd'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBacked'
+# EMAIL_HOST = 'smtp.gmail'
+# EMAIL_PORT = '587'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'text24noww@gmail.com'
+# EMAIL_HOST_PASSWORD = 'lbyk ghpt blwf qvnd'
